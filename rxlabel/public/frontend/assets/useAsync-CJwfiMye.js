@@ -1,1 +1,0 @@
-import{o as s,r as u,bi as c}from"./index-Db0pv0Bi.js";function i(t,{immediate:o=!0}={}){const r=c(),a=u(o),n=u(null);async function e(){a.value=!0;try{r.value=await t(),n.value=null}catch(l){console.error(l),n.value=l}finally{a.value=!1}}return o&&s(e),{data:r,loading:a,error:n,run:e}}export{i as u};

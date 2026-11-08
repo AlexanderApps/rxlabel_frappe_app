@@ -1,0 +1,1 @@
+import{an as r}from"./index-DGTiTX0E.js";function l(){return r("get_users")}function d(e,u,n,t=null,s=null){return r("add_user",{name:e,email:u,password:n,role:t,position:s})}function o(e,u,n,t=null,s=null){return r("update_user",{id:e,name:u,email:n,role:t,position:s})}function i(e){return r("delete_user",{id:e})}export{d as a,i as d,l as g,o as u};
