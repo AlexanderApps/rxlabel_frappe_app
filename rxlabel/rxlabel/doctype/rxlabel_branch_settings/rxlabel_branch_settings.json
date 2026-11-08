@@ -1,0 +1,122 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-06 21:30:00.000000",
+ "modified": "2026-11-06 21:30:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "module": "RxLabel",
+ "name": "RxLabel Branch Settings",
+ "owner": "Administrator",
+ "modified_by": "Administrator",
+ "description": "RxLabel settings of one branch: what the label says about the branch, label and printing settings.",
+ "field_order": [
+  "branch",
+  "facility_name",
+  "facility_address",
+  "facility_contact",
+  "queue_size",
+  "date_format",
+  "alert_sound",
+  "settings_json"
+ ],
+ "fields": [
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "label": "Branch",
+   "options": "Warehouse",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "facility_name",
+   "fieldtype": "Data",
+   "label": "Name on labels",
+   "description": "Empty: the Warehouse name"
+  },
+  {
+   "fieldname": "facility_address",
+   "fieldtype": "Small Text",
+   "label": "Address on labels",
+   "description": "Empty: the Warehouse address"
+  },
+  {
+   "fieldname": "facility_contact",
+   "fieldtype": "Data",
+   "label": "Phone on labels",
+   "description": "Empty: the Warehouse phone"
+  },
+  {
+   "fieldname": "queue_size",
+   "fieldtype": "Int",
+   "label": "Queue Size",
+   "default": "100"
+  },
+  {
+   "fieldname": "date_format",
+   "fieldtype": "Data",
+   "label": "Date Format",
+   "default": "dt5"
+  },
+  {
+   "fieldname": "alert_sound",
+   "fieldtype": "Check",
+   "label": "Alert Sound",
+   "default": "1"
+  },
+  {
+   "fieldname": "settings_json",
+   "fieldtype": "JSON",
+   "label": "Label and printing settings",
+   "description": "Label settings, calibration, queue options (set in RxLabel)"
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  },
+  {
+   "role": "RxLabel Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  },
+  {
+   "role": "RxLabel Manager",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "row_format": "Dynamic",
+ "autoname": "field:branch",
+ "title_field": "branch",
+ "naming_rule": "By fieldname"
+}

@@ -1,0 +1,97 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-06 21:30:00.000000",
+ "modified": "2026-11-06 21:30:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "module": "RxLabel",
+ "name": "RxLabel Settings",
+ "owner": "Administrator",
+ "modified_by": "Administrator",
+ "description": "Company-wide RxLabel settings: licence, terms, shared phrases.",
+ "field_order": [
+  "company",
+  "license_key",
+  "license_expires_at",
+  "terms_version",
+  "terms_accepted_by",
+  "terms_accepted_at",
+  "shared_json"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "license_key",
+   "fieldtype": "Password",
+   "label": "Licence key"
+  },
+  {
+   "fieldname": "license_expires_at",
+   "fieldtype": "Int",
+   "label": "Licence expires (Unix time)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "terms_version",
+   "fieldtype": "Data",
+   "label": "Terms Version",
+   "read_only": 1
+  },
+  {
+   "fieldname": "terms_accepted_by",
+   "fieldtype": "Data",
+   "label": "Terms Accepted By",
+   "read_only": 1
+  },
+  {
+   "fieldname": "terms_accepted_at",
+   "fieldtype": "Datetime",
+   "label": "Terms Accepted At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "shared_json",
+   "fieldtype": "JSON",
+   "label": "Shared settings",
+   "description": "Phrases and other company-wide settings (set in RxLabel)"
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  },
+  {
+   "role": "RxLabel Admin",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "row_format": "Dynamic",
+ "issingle": 1
+}

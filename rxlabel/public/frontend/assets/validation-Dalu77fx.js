@@ -1,0 +1,1 @@
+const s=8,n=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;function t(r){const e=r.trim();return e?n.test(e)?null:"Enter a valid email address, like name@example.com":"Enter an email address"}function a(r){return r?[...r].length>=8?null:"Use at least 8 characters":"Enter a password"}export{s as M,t as e,a as n};

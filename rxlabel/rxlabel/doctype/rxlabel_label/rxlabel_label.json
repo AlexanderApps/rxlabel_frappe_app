@@ -1,0 +1,116 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-06 21:30:00.000000",
+ "modified": "2026-11-06 21:30:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "module": "RxLabel",
+ "name": "RxLabel Label",
+ "owner": "Administrator",
+ "modified_by": "Administrator",
+ "description": "A label in the shared label library (preloaded or added by pharmacists).",
+ "field_order": [
+  "product",
+  "instructions",
+  "warning",
+  "is_custom",
+  "seed_key"
+ ],
+ "fields": [
+  {
+   "fieldname": "product",
+   "fieldtype": "Data",
+   "label": "Product",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "instructions",
+   "fieldtype": "Small Text",
+   "label": "Instructions",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "warning",
+   "fieldtype": "Small Text",
+   "label": "Warning"
+  },
+  {
+   "fieldname": "is_custom",
+   "fieldtype": "Check",
+   "label": "Is Custom",
+   "default": "1",
+   "in_standard_filter": 1,
+   "description": "Added or edited here (not a preloaded label)"
+  },
+  {
+   "fieldname": "seed_key",
+   "fieldtype": "Data",
+   "label": "Seed Key",
+   "read_only": 1,
+   "unique": 1,
+   "description": "Identity of a preloaded label"
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  },
+  {
+   "role": "RxLabel Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  },
+  {
+   "role": "RxLabel Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  },
+  {
+   "role": "RxLabel User",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 0,
+   "email": 0,
+   "share": 0
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "row_format": "Dynamic",
+ "autoname": "autoincrement",
+ "title_field": "product",
+ "search_fields": "product",
+ "naming_rule": "Autoincrement"
+}

@@ -1,0 +1,29 @@
+[project]
+name = "rxlabel"
+authors = [{ name = "Alexander Appiah" }]
+description = "RxLabel medication labels in Frappe / ERPNext"
+requires-python = ">=3.10"
+readme = "README.md"
+version = "0.1.0"
+dependencies = [
+    "cryptography>=42",
+    "fonttools>=4.40,<5",
+    "Pillow>=10.1,<13",
+    "freetype-py>=2.4,<3",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+# Two packages: the app (rxlabel) and RxLabel's shared rules (rxlabel_core).
+[tool.setuptools.packages.find]
+include = ["rxlabel*", "rxlabel_core*"]
+
+[tool.setuptools.package-data]
+"*" = ["*.json", "*.txt", "*.html", "*.sql", "*.ttf", "*.otf", "*.svg", "*.png", "*.js", "*.css", "*.woff2",
+       "**/*"]
+
+[tool.bench.frappe-dependencies]
+frappe = ">=16.0.0,<17.0.0"
+erpnext = ">=16.0.0,<17.0.0"

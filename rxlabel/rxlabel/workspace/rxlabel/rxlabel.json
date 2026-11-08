@@ -1,0 +1,121 @@
+{
+ "charts": [],
+ "content": "[{\"id\": \"rxhead0001\", \"type\": \"header\", \"data\": {\"text\": \"\\u003cspan class=\\\"h4\\\"\\u003e\\u003cb\\u003eRxLabel\\u003c/b\\u003e\\u003c/span\\u003e\", \"col\": 12}}, {\"id\": \"rxpara0001\", \"type\": \"paragraph\", \"data\": {\"text\": \"Medication labels for each branch. Open RxLabel to print; the records below are RxLabel's data in ERPNext.\", \"col\": 12}}, {\"id\": \"rxshort000\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Open RxLabel\", \"col\": 3}}, {\"id\": \"rxshort001\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Labels\", \"col\": 3}}, {\"id\": \"rxshort002\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Clients\", \"col\": 3}}, {\"id\": \"rxshort003\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Print History\", \"col\": 3}}, {\"id\": \"rxshort004\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Branch Settings\", \"col\": 3}}, {\"id\": \"rxshort005\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"RxLabel Settings\", \"col\": 3}}]",
+ "creation": "2026-11-08 12:29:33.358097",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "hide_custom": 0,
+ "icon": "tag",
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "RxLabel",
+ "link_type": "DocType",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Setup",
+   "link_count": 3,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Users",
+   "link_count": 0,
+   "link_to": "User",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Branches (Warehouses)",
+   "link_count": 0,
+   "link_to": "Warehouse",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "User Permissions (who works where)",
+   "link_count": 0,
+   "link_to": "User Permission",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-11-08 12:29:44.359263",
+ "modified_by": "Administrator",
+ "module": "RxLabel",
+ "name": "RxLabel",
+ "number_cards": [],
+ "owner": "Administrator",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [
+  {
+   "role": "RxLabel Admin"
+  },
+  {
+   "role": "RxLabel Manager"
+  },
+  {
+   "role": "RxLabel User"
+  },
+  {
+   "role": "System Manager"
+  }
+ ],
+ "sequence_id": 0.0,
+ "shortcuts": [
+  {
+   "color": "Blue",
+   "doc_view": "",
+   "label": "Open RxLabel",
+   "type": "URL",
+   "url": "/rxlabel"
+  },
+  {
+   "doc_view": "List",
+   "label": "Labels",
+   "link_to": "RxLabel Label",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "List",
+   "label": "Clients",
+   "link_to": "RxLabel Client",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "List",
+   "label": "Print History",
+   "link_to": "RxLabel Print History",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "List",
+   "label": "Branch Settings",
+   "link_to": "RxLabel Branch Settings",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "",
+   "label": "RxLabel Settings",
+   "link_to": "RxLabel Settings",
+   "type": "DocType"
+  }
+ ],
+ "standard": 1,
+ "title": "RxLabel",
+ "type": "Workspace"
+}
