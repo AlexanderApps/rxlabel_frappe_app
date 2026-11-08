@@ -28,3 +28,4 @@ from .printing import (  # noqa: F401,E402
     get_print_history, list_label_sizes, list_templates, record_print)
 from .admin import export_diagnostics, get_general_stats, get_users  # noqa: F401,E402
 from .movein import move_in_data  # noqa: F401,E402
+from .data import export_data, get_export_counts, get_export_preview  # noqa: F401,E402
