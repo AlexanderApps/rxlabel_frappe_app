@@ -7,10 +7,10 @@ from frappe.tests.test_api import FrappeAPITestCase
 from rxlabel import api, install
 from rxlabel.access import rxlabel_role
 
-from .utils import PASSWORD, call, ensure_branch, ensure_user, ok
+from .utils import KeepsSettings, PASSWORD, call, ensure_branch, ensure_user, ok
 
 
-class TestBasics(IntegrationTestCase):
+class TestBasics(KeepsSettings, IntegrationTestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -97,7 +97,7 @@ class TestBasics(IntegrationTestCase):
         self.assertIn("Warehouse", reply["message"])
 
 
-class TestOverHttp(FrappeAPITestCase):
+class TestOverHttp(KeepsSettings, FrappeAPITestCase):
     """Sign-in and errors as the browser sees them."""
 
     @classmethod
@@ -134,7 +134,7 @@ class TestOverHttp(FrappeAPITestCase):
         self.assertEqual(self.post_cmd("get_me", {"sid": sid}).status_code, 401)
 
 
-class TestEveryCommand(IntegrationTestCase):
+class TestEveryCommand(KeepsSettings, IntegrationTestCase):
     def test_guests_are_turned_away(self):
         """Every command but the sign-in ones answers guests with UNAUTHORIZED."""
         import inspect
@@ -154,7 +154,7 @@ class TestEveryCommand(IntegrationTestCase):
             frappe.set_user("Administrator")
 
 
-class TestLicence(IntegrationTestCase):
+class TestLicence(KeepsSettings, IntegrationTestCase):
     def setUp(self):
         from rxlabel import licensing
         from rxlabel_core import license
@@ -185,3 +185,36 @@ class TestLicence(IntegrationTestCase):
         status = ok(api.check_setup_status)
         self.assertFalse(status["is_license_expired"])
         self.assertTrue(status["is_setup_complete"])
+
+
+class TestSettingsKept(IntegrationTestCase):
+    """Tests put the site's licence and settings back (KeepsSettings)."""
+
+    def test_settings_come_back(self):
+        from frappe.utils.password import get_decrypted_password, set_encrypted_password
+        from .utils import SETTINGS, _restore_settings
+
+        def state():
+            return (frappe.db.get_single_value(SETTINGS, "license_expires_at"),
+                    frappe.db.get_single_value(SETTINGS, "shared_json"),
+                    get_decrypted_password(SETTINGS, SETTINGS, "license_key", raise_exception=False))
+
+        before = state()
+        try:
+            frappe.db.set_single_value(SETTINGS, {"license_expires_at": 2000000000, "shared_json": '{"a": 1}'})
+            set_encrypted_password(SETTINGS, SETTINGS, "THE-SITES-REAL-KEY", "license_key")
+            frappe.db.commit()
+
+            class Changes(KeepsSettings, IntegrationTestCase):
+                def runTest(self):
+                    pass
+
+            Changes.setUpClass()
+            frappe.db.set_single_value(SETTINGS, {"license_expires_at": 1, "shared_json": None})
+            frappe.db.commit()
+            Changes.tearDownClass()
+            Changes.doClassCleanups()
+            self.assertEqual(state(), (2000000000, '{"a": 1}', "THE-SITES-REAL-KEY"))
+        finally:
+            exp, shared, key = before
+            _restore_settings({"license_expires_at": exp, "shared_json": shared}, key)

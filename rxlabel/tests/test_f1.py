@@ -9,12 +9,12 @@ from frappe.tests import IntegrationTestCase
 from rxlabel import api, install
 
 from . import demo
-from .utils import call, ensure_branch, ensure_user, ok
+from .utils import KeepsSettings, call, ensure_branch, ensure_user, ok
 
 ADMIN, MANAGER, USER = "rx-admin@example.com", "rx-manager@example.com", "rx-user@example.com"
 
 
-class F1(IntegrationTestCase):
+class F1(KeepsSettings, IntegrationTestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()

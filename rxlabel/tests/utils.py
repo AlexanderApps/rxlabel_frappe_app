@@ -9,6 +9,37 @@ COMPANY = "RxLabel Test Pharmacy"
 ABBR = "RXT"
 PASSWORD = "Test-pass-1234"
 
+SETTINGS = "RxLabel Settings"
+SETTINGS_FIELDS = ("company", "license_key", "license_expires_at", "terms_version", "terms_accepted_by",
+                   "terms_accepted_at", "shared_json")
+
+
+class KeepsSettings:
+    """Put the site's RxLabel Settings (licence, terms, the company's label
+    settings) back as they were after the class's tests: tests change them,
+    and they may run on a site in use, with a real licence key."""
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        from frappe.utils.password import get_decrypted_password
+
+        saved = {f: frappe.db.get_single_value(SETTINGS, f) for f in SETTINGS_FIELDS}
+        key = get_decrypted_password(SETTINGS, SETTINGS, "license_key", raise_exception=False)
+        cls.addClassCleanup(_restore_settings, saved, key)
+
+
+def _restore_settings(saved: dict, key: str | None) -> None:
+    from frappe.utils.password import remove_encrypted_password, set_encrypted_password
+
+    frappe.set_user("Administrator")
+    frappe.db.set_single_value(SETTINGS, saved)
+    if key:
+        set_encrypted_password(SETTINGS, SETTINGS, key, "license_key")
+    else:
+        remove_encrypted_password(SETTINGS, SETTINGS, "license_key")
+    frappe.db.commit()
+
 
 def call(fn, **kwargs):
     """Run a command as one request would: returns (status, reply); a success

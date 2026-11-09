@@ -15,7 +15,7 @@ from rxlabel import api, movein
 from rxlabel_core import data_transfer
 
 from . import demo
-from .utils import PASSWORD, ensure_branch
+from .utils import KeepsSettings, PASSWORD, ensure_branch
 
 ADMIN, MANAGER = "rx-admin@example.com", "rx-manager@example.com"
 
@@ -35,7 +35,7 @@ def export_zip(labels, clients, client_labels):
     return buf.getvalue()
 
 
-class TestMoveIn(FrappeAPITestCase):
+class TestMoveIn(KeepsSettings, FrappeAPITestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
