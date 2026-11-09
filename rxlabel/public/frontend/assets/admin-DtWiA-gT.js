@@ -1,1 +1,0 @@
-import{an as t}from"./index-DGTiTX0E.js";function n(){return t("get_db_diagnostics")}function i(a){return t("optimize_database",{operations:a})}function s(){return t("get_general_stats")}function o(){return t("export_diagnostics")}export{n as a,o as e,s as g,i as o};
